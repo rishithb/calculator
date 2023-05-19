@@ -19,8 +19,25 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // records operator variable and stores first number
     operators.forEach((OPERATOR) => OPERATOR.addEventListener("click", function(o) {
-        operator = o.target.textContent
-        screen.innerHTML += (" " + operator + " ")
+        if (screen.innerHTML.includes("+") 
+         || screen.innerHTML.includes("-") 
+         || screen.innerHTML.includes("X")
+         || screen.innerHTML.includes("/")) 
+         {
+            var text = screen.innerHTML
+            var pos = text.indexOf(operator)
+            num1 = Number(text.substring(0, pos - 1))
+            num2 = Number(text.substring(pos + 1))
+            screen.innerHTML = operate(operator, num1, num2) + (" " + o.target.textContent + " ")
+            operator = o.target.textContent
+         }
+
+         else 
+         {
+            operator = o.target.textContent
+            screen.innerHTML += (" " + operator + " ")
+         }
+        
     }))
 
     // stores the second number and calculates
@@ -46,10 +63,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
 function operate(op, n1, n2) {
     if (op == "+")
-        return n1 + n2
+        return (n1 + n2)
     else if (op == "-")
-        return n1 - n2
+        return (n1 - n2)
     else if (op == "X")
-        return n1 * n2
-    else return n1 / n2
+        return (n1 * n2)
+    else if (op == "/" && num2 == 0)
+        return "don't divide with 0!"
+    else return (n1 / n2).toFixed(4)
 }

@@ -33,10 +33,20 @@ button {
     margin-bottom: 24px;
     padding: 4px;
     text-align: end;
-    font-size: 38px;
+    font-size: 32px;
     color: rgb(70, 72, 70);
 }
 
 .ops { background-color: rgb(123, 150, 211); }
 .clear, .equals { background-color: rgba(236, 106, 40, 0.862); }
 .num { background-color: rgb(170, 183, 194); }
+
+/* button hover animations */
+.num:hover { background-color: rgb(140, 152, 161); }
+.equals:hover { background-color: rgba(195, 89, 36, 0.862); }
+.clear:hover { background-color: rgba(195, 89, 36, 0.862); }
+.ops:hover { background-color: rgb(98, 122, 175); }
+
+/* button click animation */
+button:active { transform: scale(1.05); }
+
